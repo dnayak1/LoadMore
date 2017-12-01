@@ -18,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-15-tbb">
-                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j2g-3v-lFg">
-                                <rect key="frame" x="16" y="78" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j2g-3v-lFg">
+                                <rect key="frame" x="10" y="78" width="355" height="29"/>
                                 <segments>
                                     <segment title="Default"/>
                                     <segment title="First Name"/>
@@ -33,16 +27,33 @@
                                     <segment title="Gender"/>
                                 </segments>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bnj-Cl-44I">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bnj-Cl-44I">
                                 <rect key="frame" x="98" y="114" width="179" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="VAh-X3-Oma"/>
+                                </constraints>
                                 <segments>
                                     <segment title="↑"/>
                                     <segment title="↓"/>
                                 </segments>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-15-tbb">
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UXs-15-tbb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3k1-Ad-2LB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UXs-15-tbb" secondAttribute="trailing" id="66B-Jm-n2k"/>
+                            <constraint firstItem="UXs-15-tbb" firstAttribute="top" secondItem="Bnj-Cl-44I" secondAttribute="bottom" constant="10" id="8hN-Tk-Glg"/>
+                            <constraint firstItem="j2g-3v-lFg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="PMD-hg-gy8"/>
+                            <constraint firstItem="Bnj-Cl-44I" firstAttribute="top" secondItem="j2g-3v-lFg" secondAttribute="bottom" constant="8" id="bnA-Zl-Uby"/>
+                            <constraint firstItem="j2g-3v-lFg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="nbC-tZ-so7"/>
+                            <constraint firstItem="Bnj-Cl-44I" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rh7-FH-t6W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2g-3v-lFg" secondAttribute="trailing" constant="10" id="sbn-7S-WQz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UXs-15-tbb" secondAttribute="bottom" id="uCa-90-mRX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="USERS" id="JzA-VP-E26"/>
