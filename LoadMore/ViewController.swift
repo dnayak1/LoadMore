@@ -11,21 +11,28 @@ import Alamofire
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    enum Sort:String {
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case gender = "gender"
-    }
-    enum Order:String {
-        case ascending = "asc"
-        case descending = "desc"
-    }
+//    enum Sort:String {
+//        case firstName = "first_name"
+//        case lastName = "last_name"
+//        case gender = "gender"
+//    }
+    var sortBy = ["id","first_name","last_name","gender"]
+    var orderBy = ["asc","desc"]
+    
+//    enum Order:String {
+//        case ascending = "asc"
+//        case descending = "desc"
+//    }
     
     var userArray:[User] = []
     var sort = "default"
     var order = "asc"
     
     @IBOutlet weak var userTableView: UITableView!
+    @IBOutlet weak var sortSegmentControl: UISegmentedControl!
+    @IBOutlet weak var orderSegmentControl: UISegmentedControl!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,14 +52,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             "index" : fromIndex
             ] as [String : Any]
         
-        if let deviceToken = UserDefaults.standard.object(forKey: "deviceToken") as? String{
-            parameters["deviceToken"] = deviceToken
-        }
-        else{
-            parameters["deviceToken"] = "2fc86447001e1e9b97c0cde26e6b875baaf2154a6acbb0573543faffa9c2bd52"
-            
-        }
-        
         Alamofire.request("http://18.217.3.86:5000/getusers", method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             //error checking
             if let json = response.result.value as? [String:Any]{
@@ -62,7 +61,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                     if let results = json["result"] as? [NSDictionary]{
                         for result in results{
                             let user = User(dictionary: result)
-                            print("inside user")
                             self.userArray.append(user!)
                         }
                         self.userTableView.reloadData()
@@ -88,22 +86,56 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     // PRAGMA MARK:- Table view delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userArray.count
+        if userArray.count != 0{
+            return userArray.count + 1
+        }
+        else{
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // check condition for last user
         // if not last user
-        let user = userArray[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "usercell", for: indexPath) as! UserCustomTableViewCell
-        cell.firstNameLabel.text = user.first_name
-        cell.lastNameLabel.text = user.last_name
-        cell.genderLabel.text = user.gender
-        cell.emailLabel.text = user.email
-        cell.ipaddressLabel.text = user.ip_address
-        return cell
+        if indexPath.row < userArray.count{
+            let user = userArray[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "usercell", for: indexPath) as! UserCustomTableViewCell
+            cell.firstNameLabel.text = user.first_name
+            cell.lastNameLabel.text = user.last_name
+            cell.genderLabel.text = user.gender
+            cell.emailLabel.text = user.email
+            cell.ipaddressLabel.text = user.ip_address
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadmore", for: indexPath) as! LoadMoreCustomTableViewCell
+            cell.loadmoreButton.tag = indexPath.row
+            return cell
+        }
     }
 
+    @IBAction func loadMoreButtonPressed(_ sender: UIButton) {
+        print("next id \(sender.tag)")
+//        loadUsers(sortBy: String, orderBy: String, fromIndex: sender.tag)
+        
+    }
+    
+    @IBAction func sortKeyPressed(_ sender: UISegmentedControl) {
+        sort = sortBy[sender.selectedSegmentIndex]
+        order = orderBy[orderSegmentControl.selectedSegmentIndex]
+        userArray.removeAll()
+        loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
+    }
+    
+    @IBAction func orderKeyPressed(_ sender: UISegmentedControl) {
+        sort = sortBy[sortSegmentControl.selectedSegmentIndex]
+        order = orderBy[sender.selectedSegmentIndex]
+        userArray.removeAll()
+        loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
+    }
+    
+    
 }
 

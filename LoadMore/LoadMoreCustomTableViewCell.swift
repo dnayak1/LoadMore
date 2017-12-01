@@ -10,6 +10,7 @@ import UIKit
 
 class LoadMoreCustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var loadmoreButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

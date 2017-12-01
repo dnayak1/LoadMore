@@ -25,6 +25,9 @@
                                     <segment title="Last Name"/>
                                     <segment title="Gender"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortKeyPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="i8g-AK-tI1"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bnj-Cl-44I">
                                 <rect key="frame" x="98" y="114" width="179" height="29"/>
@@ -35,6 +38,9 @@
                                     <segment title="↑"/>
                                     <segment title="↓"/>
                                 </segments>
+                                <connections>
+                                    <action selector="orderKeyPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="lCR-96-VGn"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UXs-15-tbb">
                                 <rect key="frame" x="0.0" y="152" width="375" height="515"/>
@@ -99,7 +105,7 @@
                                             <outlet property="lastNameLabel" destination="YAm-Yw-y0y" id="Anm-E9-3OR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QmA-yq-QZW" customClass="LoadMoreCustomTableViewCell" customModule="LoadMore" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadmore" id="QmA-yq-QZW" customClass="LoadMoreCustomTableViewCell" customModule="LoadMore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="121" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QmA-yq-QZW" id="odF-yV-5Wr">
@@ -109,6 +115,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-k6-Pxm">
                                                     <rect key="frame" x="151" y="6" width="73" height="30"/>
                                                     <state key="normal" title="Load More"/>
+                                                    <connections>
+                                                        <action selector="loadMoreButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jDc-tw-Sh0"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -116,6 +125,9 @@
                                                 <constraint firstItem="9ZF-k6-Pxm" firstAttribute="centerX" secondItem="odF-yV-5Wr" secondAttribute="centerX" id="epC-AS-mG1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loadmoreButton" destination="9ZF-k6-Pxm" id="run-xu-svS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -140,6 +152,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="USERS" id="JzA-VP-E26"/>
                     <connections>
+                        <outlet property="orderSegmentControl" destination="Bnj-Cl-44I" id="cCE-Uv-l67"/>
+                        <outlet property="sortSegmentControl" destination="j2g-3v-lFg" id="s72-Ad-HcO"/>
                         <outlet property="userTableView" destination="UXs-15-tbb" id="BSl-q0-Aeh"/>
                     </connections>
                 </viewController>
