@@ -10,6 +10,16 @@ import UIKit
 
 class UserCustomTableViewCell: UITableViewCell {
 
+    
+    
+    
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var ipaddressLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

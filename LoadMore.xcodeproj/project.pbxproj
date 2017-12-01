@@ -15,6 +15,7 @@
 		4895CA00C759265808942DC2 /* Pods_LoadMore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D77FAB626CDADD2C0E7A76 /* Pods_LoadMore.framework */; };
 		CEA6B4EF1FD0DFFF008D92AC /* UserCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */; };
 		CEA6B4F11FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */; };
+		CEA6B4F31FD0E57E008D92AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4F21FD0E57E008D92AC /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9F99600D83199C7F6CE92AC5 /* Pods-LoadMore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadMore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoadMore/Pods-LoadMore.debug.xcconfig"; sourceTree = "<group>"; };
 		CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomTableViewCell.swift; sourceTree = "<group>"; };
 		CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCustomTableViewCell.swift; sourceTree = "<group>"; };
+		CEA6B4F21FD0E57E008D92AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DEFF5D884B9302450EF129C9 /* Pods-LoadMore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadMore.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoadMore/Pods-LoadMore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				2A9612A61FD0D4B5007E17C1 /* Info.plist */,
 				CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */,
 				CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */,
+				CEA6B4F21FD0E57E008D92AC /* User.swift */,
 			);
 			path = LoadMore;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				2A96129D1FD0D4B5007E17C1 /* ViewController.swift in Sources */,
 				CEA6B4EF1FD0DFFF008D92AC /* UserCustomTableViewCell.swift in Sources */,
 				2A96129B1FD0D4B5007E17C1 /* AppDelegate.swift in Sources */,
+				CEA6B4F31FD0E57E008D92AC /* User.swift in Sources */,
 				CEA6B4F11FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
