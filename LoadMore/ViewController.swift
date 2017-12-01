@@ -118,6 +118,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 
     @IBAction func loadMoreButtonPressed(_ sender: UIButton) {
         print("next id \(sender.tag)")
+        if sender.tag>99{
+            userArray.removeSubrange(0...49)
+            userTableView.reloadData()
+        }
+        loadUsers(sortBy: sort, orderBy: order, fromIndex: sender.tag)
 //        loadUsers(sortBy: String, orderBy: String, fromIndex: sender.tag)
         
     }
