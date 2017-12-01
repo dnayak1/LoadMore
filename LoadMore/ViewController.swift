@@ -27,7 +27,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var userArray:[User] = []
     var sort = "default"
     var order = "asc"
-    
+    var currentIndex = 0
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     @IBOutlet weak var orderSegmentControl: UISegmentedControl!
@@ -99,6 +99,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         // check condition for last user
         // if not last user
+        var loadmoreTag = indexPath.row
+//        var loadPreviousTag =
+        
         if indexPath.row < userArray.count{
             let user = userArray[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "usercell", for: indexPath) as! UserCustomTableViewCell
@@ -111,18 +114,19 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadmore", for: indexPath) as! LoadMoreCustomTableViewCell
-            cell.loadmoreButton.tag = indexPath.row
+            cell.loadmoreButton.tag = loadmoreTag
             return cell
         }
     }
 
     @IBAction func loadMoreButtonPressed(_ sender: UIButton) {
         print("next id \(sender.tag)")
+        currentIndex = sender.tag
         if sender.tag>99{
             userArray.removeSubrange(0...49)
             userTableView.reloadData()
         }
-        loadUsers(sortBy: sort, orderBy: order, fromIndex: sender.tag)
+        loadUsers(sortBy: sort, orderBy: order, fromIndex: currentIndex)
 //        loadUsers(sortBy: String, orderBy: String, fromIndex: sender.tag)
         
     }
