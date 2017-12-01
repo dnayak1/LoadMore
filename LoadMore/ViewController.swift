@@ -140,23 +140,26 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBAction func loadMoreButtonPressed(_ sender: UIButton) {
 //        print("next id \(sender.tag)")
 //        currentNextIndex = sender.tag
-        nextIndex += 50;
-        previousIndex += 50;
-        userArray.removeSubrange(0...49)
-        userTableView.reloadData()
         loadUsers(sortBy: sort, orderBy: order, fromIndex: nextIndex)
+        nextIndex += 50;
+        if nextIndex > 100{
+            previousIndex += 50
+            userArray.removeSubrange(0...49)
+            userTableView.reloadData()
+        }
         isNextCalled = true
     }
     
     @IBAction func loadPreviousButtonPressed(_ sender: UIButton) {
         print("previous \(sender.tag)")
-        nextIndex -= 50;
+        
+        loadUsers(sortBy: sort, orderBy: order, fromIndex: previousIndex)
         previousIndex -= 50;
-        if sender.tag>99{
+        if previousIndex < 900{
+            nextIndex -= 50;
             userArray.removeSubrange(50...99)
             userTableView.reloadData()
         }
-        loadUsers(sortBy: sort, orderBy: order, fromIndex: previousIndex)
         //        loadUsers(sortBy: String, orderBy: String, fromIndex: sender.tag)
         isNextCalled = false
     }
@@ -165,6 +168,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         sort = sortBy[sender.selectedSegmentIndex]
         order = orderBy[orderSegmentControl.selectedSegmentIndex]
         userArray.removeAll()
+        nextIndex = 50
+        previousIndex = 0
+        isNextCalled = true
         loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
     }
     
@@ -172,6 +178,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         sort = sortBy[sortSegmentControl.selectedSegmentIndex]
         order = orderBy[sender.selectedSegmentIndex]
         userArray.removeAll()
+        nextIndex = 50
+        previousIndex = 0
+        isNextCalled = true
         loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
     }
     

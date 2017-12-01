@@ -139,6 +139,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyN-KI-dvB">
                                                     <rect key="frame" x="139" y="6" width="97" height="30"/>
                                                     <state key="normal" title="Load Previous"/>
+                                                    <connections>
+                                                        <action selector="loadPreviousButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="La9-Is-DnF"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
