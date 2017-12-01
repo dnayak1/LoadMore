@@ -13,6 +13,7 @@
 		2A9612A21FD0D4B5007E17C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9612A11FD0D4B5007E17C1 /* Assets.xcassets */; };
 		2A9612A51FD0D4B5007E17C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9612A31FD0D4B5007E17C1 /* LaunchScreen.storyboard */; };
 		4895CA00C759265808942DC2 /* Pods_LoadMore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D77FAB626CDADD2C0E7A76 /* Pods_LoadMore.framework */; };
+		73009CD61FD1088100A2E972 /* LoadPreviousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73009CD51FD1088100A2E972 /* LoadPreviousTableViewCell.swift */; };
 		CEA6B4EF1FD0DFFF008D92AC /* UserCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */; };
 		CEA6B4F11FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */; };
 		CEA6B4F31FD0E57E008D92AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6B4F21FD0E57E008D92AC /* User.swift */; };
@@ -27,6 +28,7 @@
 		2A9612A11FD0D4B5007E17C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A9612A41FD0D4B5007E17C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A9612A61FD0D4B5007E17C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73009CD51FD1088100A2E972 /* LoadPreviousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPreviousTableViewCell.swift; sourceTree = "<group>"; };
 		9F99600D83199C7F6CE92AC5 /* Pods-LoadMore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoadMore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoadMore/Pods-LoadMore.debug.xcconfig"; sourceTree = "<group>"; };
 		CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCustomTableViewCell.swift; sourceTree = "<group>"; };
 		CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				CEA6B4EE1FD0DFFF008D92AC /* UserCustomTableViewCell.swift */,
 				CEA6B4F01FD0E01E008D92AC /* LoadMoreCustomTableViewCell.swift */,
 				CEA6B4F21FD0E57E008D92AC /* User.swift */,
+				73009CD51FD1088100A2E972 /* LoadPreviousTableViewCell.swift */,
 			);
 			path = LoadMore;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73009CD61FD1088100A2E972 /* LoadPreviousTableViewCell.swift in Sources */,
 				2A96129D1FD0D4B5007E17C1 /* ViewController.swift in Sources */,
 				CEA6B4EF1FD0DFFF008D92AC /* UserCustomTableViewCell.swift in Sources */,
 				2A96129B1FD0D4B5007E17C1 /* AppDelegate.swift in Sources */,
