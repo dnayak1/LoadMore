@@ -27,8 +27,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var userArray:[User] = []
     var sort = "id"
     var order = "asc"
-    var previousIndex = 0
-    var nextIndex = 50
+    var previousIndex = -150
+    var nextIndex = 0
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     @IBOutlet weak var orderSegmentControl: UISegmentedControl!
@@ -47,7 +47,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func loadUsers(sortBy:String, orderBy:String, fromIndex:Int) {
-        var parameters = [
+        let parameters = [
             "sortByField" : sortBy,
             "sortByType" : orderBy,
             "index" : fromIndex
@@ -60,20 +60,31 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 let code = json["code"] as? Int
                 if code == 200{
                     if let results = json["result"] as? [NSDictionary]{
+                        
+                        // store new users data in temporary array
+                        var userTempArray:[User] = []
                         for result in results{
                             let user = User(dictionary: result)
-                            var userTempArray:[User] = []
                             userTempArray.append(user!)
-                            if self.isNextCalled{
-                                self.userArray = self.userArray + userTempArray
-                            }
-                            else{
-                                self.userArray = userTempArray + self.userArray
-                            }
                         }
+                        
+                        // append the new data at the beginning or at the end
+                        if self.isNextCalled{
+                            self.userArray = self.userArray + userTempArray
+                            if self.userArray.count > 100 {self.userArray.removeSubrange(0...49)}
+                            self.nextIndex += 50
+                            self.previousIndex += 50
+                        }
+                        else{
+                            self.userArray = userTempArray + self.userArray
+                            if self.userArray.count > 100 {self.userArray.removeSubrange(100...149)}
+                            self.previousIndex -= 50
+                            self.nextIndex -= 50
+                        }
+                        
+                        //reload the tableview
                         self.userTableView.reloadData()
                     }
-                    print("inside code 200")
                 }
                 else if code == 202{
                     //disable laod more button and show alert
@@ -92,7 +103,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     // PRAGMA MARK:- Table view delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userArray.count != 0{
-            if previousIndex >= 50 && nextIndex < 1000{
+            if previousIndex > -1 && nextIndex <= 950{
                 return userArray.count + 2
             }
             else{
@@ -108,18 +119,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var useroffset = 0
         //setting offset
-        if previousIndex >= 50{
+        if previousIndex > -1{
             useroffset = 1
             if indexPath.row == 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "previous", for: indexPath) as! LoadPreviousTableViewCell
-//                cell.loadmoreButton.tag = loadmoreTag
                 return cell
             }
         }
-        // check condition for last user
-        // if not last user
-//        var loadmoreTag = indexPath.row
-//        var loadPreviousTag =
         if indexPath.row-useroffset < userArray.count{
             let user = userArray[indexPath.row - useroffset]
             let cell = tableView.dequeueReusableCell(withIdentifier: "usercell", for: indexPath) as! UserCustomTableViewCell
@@ -132,35 +138,17 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "loadmore", for: indexPath) as! LoadMoreCustomTableViewCell
-//            cell.loadmoreButton.tag = loadmoreTag
             return cell
         }
     }
 
     @IBAction func loadMoreButtonPressed(_ sender: UIButton) {
-//        print("next id \(sender.tag)")
-//        currentNextIndex = sender.tag
         loadUsers(sortBy: sort, orderBy: order, fromIndex: nextIndex)
-        nextIndex += 50;
-        if nextIndex > 100{
-            previousIndex += 50
-            userArray.removeSubrange(0...49)
-            userTableView.reloadData()
-        }
         isNextCalled = true
     }
     
     @IBAction func loadPreviousButtonPressed(_ sender: UIButton) {
-        print("previous \(sender.tag)")
-        
         loadUsers(sortBy: sort, orderBy: order, fromIndex: previousIndex)
-        previousIndex -= 50;
-        if previousIndex < 900{
-            nextIndex -= 50;
-            userArray.removeSubrange(50...99)
-            userTableView.reloadData()
-        }
-        //        loadUsers(sortBy: String, orderBy: String, fromIndex: sender.tag)
         isNextCalled = false
     }
     
