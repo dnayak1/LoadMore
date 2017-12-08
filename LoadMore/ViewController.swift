@@ -156,8 +156,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         sort = sortBy[sender.selectedSegmentIndex]
         order = orderBy[orderSegmentControl.selectedSegmentIndex]
         userArray.removeAll()
-        nextIndex = 50
-        previousIndex = 0
+        nextIndex = 0
+        previousIndex = -150
         isNextCalled = true
         loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
     }
@@ -166,8 +166,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         sort = sortBy[sortSegmentControl.selectedSegmentIndex]
         order = orderBy[sender.selectedSegmentIndex]
         userArray.removeAll()
-        nextIndex = 50
-        previousIndex = 0
+        nextIndex = 0
+        previousIndex = -150
         isNextCalled = true
         loadUsers(sortBy: sort, orderBy: order, fromIndex: 0)
     }
